@@ -36,7 +36,14 @@ class MixRoll extends React.Component {
                     </Link>
                     <span> &bull; </span>
                     <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
+                      <div>{post.frontmatter.date}</div>
+                      <div>
+                        {post.frontmatter.creatorurl ? (
+                          <a href={post.frontmatter.creatorurl}>
+                            {post.frontmatter.creator}
+                          </a>
+                        ) : post.frontmatter.creator}
+                      </div>
                     </span>
                   </p>
                 </header>
@@ -75,7 +82,10 @@ export default () => (
               frontmatter {
                 title
                 templateKey
-                date(formatString: "MMMM DD, YYYY")
+                date(formatString: "MM/DD/YYYY")
+                mainimage
+                creator
+                creatorurl
               }
             }
           }

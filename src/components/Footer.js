@@ -1,108 +1,65 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
-import logo from '../img/logo.svg'
-import facebook from '../img/social/facebook.svg'
-import instagram from '../img/social/instagram.svg'
-import twitter from '../img/social/twitter.svg'
-import vimeo from '../img/social/vimeo.svg'
+import PropTypes from 'prop-types'
+import { Link, graphql, StaticQuery } from 'gatsby'
+import logo from '../img/inw-logo.png'
+import { navBarLinks } from './Navbar'
 
 const Footer = class extends React.Component {
   render() {
+    const { edges } = this.props.data.allMarkdownRemark
+    const nodes = edges.map(e => e.node)
+
+    const main = nodes.find(n => n.frontmatter.title === 'Main Config')
+    const contact = nodes.find(n => n.frontmatter.title === 'Contact')
+
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
           <img
             src={logo}
-            alt="Kaldi"
-            style={{ width: '14em', height: '10em' }}
+            alt="Infinite New World"
+            style={{ width: '300px' }}
           />
         </div>
+
         <div className="content has-text-centered has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">
             <div style={{ maxWidth: '100vw' }} className="columns">
-              <div className="column is-4">
+              <div className="column is-3">
                 <section className="menu">
                   <ul className="menu-list">
-                    <li>
-                      <Link to="/" className="navbar-item">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact/examples">
-                        Form Examples
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
+                    {navBarLinks.map(item => (
+                      <li key={item.url}>
+                        <Link to={item.url} className="navbar-item">
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </section>
               </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </section>
+
+              <div className="column is-3">
+                <h4>Info</h4>
+                <p dangerouslySetInnerHTML={{ __html: main.html }} />
               </div>
-              <div className="column is-4 social">
-                <a title="facebook" href="https://facebook.com">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="twitter" href="https://twitter.com">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt="Twitter"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="instagram" href="https://instagram.com">
-                  <img
-                    src={instagram}
-                    alt="Instagram"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="vimeo" href="https://vimeo.com">
-                  <img
-                    src={vimeo}
-                    alt="Vimeo"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
+
+              <div className="column is-3">
+                <h4>Contact</h4>
+                <p dangerouslySetInnerHTML={{ __html: contact.html }} />
+              </div>
+
+              <div className="column is-3">
+                <h4>Follow</h4>
+                <ul className="menu-list">
+                  {main.frontmatter.urls.map(item => (
+                    <li key={item.url}>
+                      <Link to={item.url} className="navbar-item">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -112,4 +69,33 @@ const Footer = class extends React.Component {
   }
 }
 
-export default Footer
+Footer.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
+  }),
+}
+
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query FooterQuery {
+        allMarkdownRemark(
+          filter: { frontmatter: { title: { in: ["Main Config", "Contact"] } } }
+        ) {
+          edges {
+            node {
+              html
+              frontmatter {
+                title
+                urls { label, url }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => <Footer data={data} />}
+  />
+)
