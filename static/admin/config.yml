@@ -11,6 +11,12 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: 'inw-test'
+    api_key: '378186341972476'
+
 collections:
   - name: "blog"
     label: "Blog"
@@ -37,12 +43,53 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Subtitle", name: "subtitle", widget: "string"}
-      - {label: "Creator", name: "creator", widget: "string"}
+      - {label: "Creator Name", name: "creator", widget: "string"}
+      - {label: "Creator URL", name: "creatorurl", widget: "string"}
+      - {label: "Apple Music URL", name: "applemusicurl", widget: "string"}
+      - {label: "Spotify URL", name: "spotifyurl", widget: "string"}
       - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Main Image", name: "mainimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
+
+  - name: "mix"
+    label: "Mix"
+    folder: "src/pages/mix"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "mix"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Creator Name", name: "creator", widget: "string"}
+      - {label: "Creator URL", name: "creatorurl", widget: "string"}
+      - {label: "Apple Music URL", name: "applemusicurl", widget: "string"}
+      - {label: "Spotify URL", name: "spotifyurl", widget: "string"}
+      - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Main Image", name: "mainimage", widget: image}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
+  - name: "configs"
+    label: "Configs"
+    files:
+      - file: "src/configs/index.md"
+        label: "Main Config"
+        name: "mainconfig"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - label: "URLS"
+            name: "urls"
+            widget: "list"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: URL, name: url, widget: string}
+          - {label: "Soundcloud URL", n ame: soundcloudurl, widget: string}
+          - {label: "Info", name: "info", widget: "markdown"}
+          - {label: "Contact", name: "contact", widget: "markdown"}
 
   - name: "pages"
     label: "Pages"
