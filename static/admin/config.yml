@@ -14,8 +14,8 @@ public_folder: /img
 media_library:
   name: cloudinary
   config:
-    cloud_name: 'inw-test'
-    api_key: '378186341972476'
+    cloud_name: inw-test
+    api_key: 378186341972476
 
 collections:
   - name: "blog"
