@@ -42,14 +42,14 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "radio-archive"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Creator Name", name: "creator", widget: "string"}
-      - {label: "Creator URL", name: "creatorurl", widget: "string"}
-      - {label: "Apple Music URL", name: "applemusicurl", widget: "string"}
-      - {label: "Spotify URL", name: "spotifyurl", widget: "string"}
-      - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Main Image", name: "mainimage", widget: image}
+      - {label: "Creator URL", name: "creatorurl", widget: "string", required: false}
+      - {label: "Apple Music URL", name: "applemusicurl", widget: "string", required: false}
+      - {label: "Spotify URL", name: "spotifyurl", widget: "string", required: false}
+      - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string", required: false}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Main Image", name: "mainimage", widget: image, required: false}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
 
@@ -62,14 +62,14 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "mix"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Creator Name", name: "creator", widget: "string"}
-      - {label: "Creator URL", name: "creatorurl", widget: "string"}
-      - {label: "Apple Music URL", name: "applemusicurl", widget: "string"}
-      - {label: "Spotify URL", name: "spotifyurl", widget: "string"}
-      - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Main Image", name: "mainimage", widget: image}
+      - {label: "Creator URL", name: "creatorurl", widget: "string", required: false}
+      - {label: "Apple Music URL", name: "applemusicurl", widget: "string", required: false}
+      - {label: "Spotify URL", name: "spotifyurl", widget: "string", required: false}
+      - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string", required: false}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Main Image", name: "mainimage", widget: image, required: false}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
 
@@ -87,7 +87,6 @@ collections:
             fields:
               - {label: Label, name: label, widget: string}
               - {label: URL, name: url, widget: string}
-          - {label: "Soundcloud URL", name: soundcloudurl, widget: string}
           - {label: "Info", name: "info", widget: "markdown"}
           - {label: "Contact", name: "contact", widget: "markdown"}
 
