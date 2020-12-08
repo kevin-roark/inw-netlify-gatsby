@@ -27,6 +27,23 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
 
+  - name: "radio-archive"
+    label: "Radio Archive"
+    folder: "src/pages/radio-archive"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "radio-archive"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Creator", name: "creator", widget: "string"}
+      - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Main Image", name: "mainimage", widget: image}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
   - name: "pages"
     label: "Pages"
     files:
