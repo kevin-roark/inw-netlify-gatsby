@@ -40,14 +40,7 @@ class MixRoll extends React.Component {
                     </span>
                   </p>
                 </header>
-                <p>
-                  {post.html}
-                  <br />
-                  <br />
-                  <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
+                <p dangerouslySetInnerHTML={{ __html: post.html }} />
               </article>
             </div>
           ))}
