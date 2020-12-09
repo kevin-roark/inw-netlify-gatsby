@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
-import MixContent from './MixContent'
+import RadioArchiveContent from './RadioArchiveContent'
 
-class MixRoll extends React.Component {
+class RadioArchiveRoll extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
@@ -13,7 +13,7 @@ class MixRoll extends React.Component {
         {posts &&
           posts.map(({ node }) => (
             <div className="is-parent column is-6" key={node.id}>
-              <MixContent
+              <RadioArchiveContent
                 data={node}
                 className={`blog-list-item tile is-child box notification`}
               />
@@ -24,7 +24,7 @@ class MixRoll extends React.Component {
   }
 }
 
-MixRoll.propTypes = {
+RadioArchiveRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -35,10 +35,10 @@ MixRoll.propTypes = {
 export default () => (
   <StaticQuery
     query={graphql`
-      query MixRollQuery {
+      query RadioArchiveRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "mix" } } }
+          filter: { frontmatter: { templateKey: { eq: "radio-archive" } } }
         ) {
           edges {
             node {
@@ -61,6 +61,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <MixRoll data={data} count={count} />}
+    render={(data, count) => <RadioArchiveRoll data={data} count={count} />}
   />
 )

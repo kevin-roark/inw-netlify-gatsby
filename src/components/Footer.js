@@ -13,7 +13,7 @@ const Footer = class extends React.Component {
     const contact = nodes.find(n => n.frontmatter.title === 'Contact')
 
     return (
-      <footer className="footer has-background-black has-text-white-ter">
+      <footer className="footer">
         <div className="content has-text-centered">
           <img
             src={logo}
@@ -22,8 +22,8 @@ const Footer = class extends React.Component {
           />
         </div>
 
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
+        <div className="content has-text-centered">
+          <div className="container">
             <div style={{ maxWidth: '100vw' }} className="columns">
               <div className="column is-3">
                 <section className="menu">

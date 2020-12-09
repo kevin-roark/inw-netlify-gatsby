@@ -6,10 +6,19 @@ const MixPreview = ({ entry, widgetFor }) => {
   const tags = entry.getIn(['data', 'tags'])
   return (
     <MixTemplate
-      content={widgetFor('body')}
-      description={entry.getIn(['data', 'description'])}
-      tags={tags && tags.toJS()}
-      title={entry.getIn(['data', 'title'])}
+      data={{
+        html: widgetFor('body'),
+        fields: { slug: entry.getIn(['data', 'slug']) },
+        frontmatter: {
+          title: entry.getIn(['data', 'title']),
+          description: entry.getIn(['data', 'description']),
+          mainimage: entry.getIn(['data', 'mainimage']),
+          creator: entry.getIn(['data', 'creator']),
+          creatorurl: entry.getIn(['data', 'creatorurl']),
+          date: entry.getIn(['data', 'date']),
+          tags: tags && tags.toJS(),
+        },
+      }}
     />
   )
 }

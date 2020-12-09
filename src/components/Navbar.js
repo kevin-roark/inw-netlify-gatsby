@@ -39,6 +39,7 @@ const Navbar = class extends React.Component {
   }
 
   render() {
+    const pathname = window && window.location && window.location.pathname
     return (
       <nav
         className="navbar is-transparent"
@@ -67,7 +68,11 @@ const Navbar = class extends React.Component {
           >
             <div className="navbar-start has-text-centered">
               {navBarLinks.map(item => (
-                <Link key={item.url} className="navbar-item" to={item.url}>
+                <Link
+                  key={item.url}
+                  className={`navbar-item ${item.url === pathname ? 'current' : ''}`}
+                  to={item.url}
+                >
                   {item.label}
                 </Link>
               ))}
