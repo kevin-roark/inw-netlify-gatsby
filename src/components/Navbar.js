@@ -39,7 +39,7 @@ const Navbar = class extends React.Component {
   }
 
   render() {
-    const pathname = window && window.location && window.location.pathname
+    const pathname = typeof window !== 'undefined' && window.location && window.location.pathname
     return (
       <nav
         className="navbar is-transparent"
