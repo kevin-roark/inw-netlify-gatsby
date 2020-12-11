@@ -9,7 +9,7 @@ applemusicurl: https://music.apple.com/us/playlist/inw05-selections-by-gideon-ja
 spotifyurl: https://open.spotify.com/playlist/2k10qrgnSGToPqNXk4LDd7?si=X2kWXQK8SfmkU840RcW66g
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw05
 description: ""
-mainimage: https://res.cloudinary.com/inw-test/image/upload/v1607659016/inw-test-site/inw05_kqst4y.jpg
+mainimage: https://res.cloudinary.com/inw-test/image/upload/v1607659016/inw-test-site/inw05.jpg
 ---
 Tracklist:
 

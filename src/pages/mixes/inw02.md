@@ -9,7 +9,7 @@ applemusicurl: https://music.apple.com/us/playlist/inw02-mix-by-dan-terndrup/pl.
 spotifyurl: https://open.spotify.com/playlist/3mDnMqZbi8wtxmfe9h2QDK?si=XBqhWoNUSFi74oZvvwqSeQ
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw02
 description: ""
-mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374391/inw-test-site/5f177b3707e0135224d84bb5.png
+mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374391/inw-test-site/inw02.jpg
 ---
 Tracklist:
 

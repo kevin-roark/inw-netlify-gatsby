@@ -9,7 +9,7 @@ applemusicurl: https://music.apple.com/us/playlist/inw04-mix-by-dane-majors/pl.u
 spotifyurl: https://open.spotify.com/playlist/5ySvwzIRjyNvZYYJ2AJe8O?si=OouTz__TTZW5-utFEXdorA
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw04
 description: ""
-mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374585/inw-test-site/5f177bf907e0135224d84bbb.png
+mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374585/inw-test-site/inw04.jpg
 ---
 Tracklist:
 

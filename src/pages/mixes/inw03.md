@@ -9,7 +9,7 @@ applemusicurl: https://music.apple.com/us/playlist/inw03-mix-by-luke-mele/pl.u-x
 spotifyurl: https://open.spotify.com/playlist/3MyCzKIk5TtaDW2mg46B4l?si=gADlj7HuQkic1qi128MzsA
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw03
 description: ""
-mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374440/inw-test-site/5f177b6707e0135224d84bb8.png
+mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374440/inw-test-site/inw03.jpg
 ---
 Tracklist:
 

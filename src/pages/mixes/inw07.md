@@ -9,7 +9,7 @@ applemusicurl: https://music.apple.com/us/playlist/inw07-russell-alexander/pl.u-
 spotifyurl: https://open.spotify.com/playlist/67OScb6pyaFj14XgNkZQcb?si=gL9uBP1VQdybpotLRGHb7Q
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw07
 description: ""
-mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374391/inw-test-site/5f177b3707e0135224d84bb5.png
+mainimage: https://res.cloudinary.com/inw-test/image/upload/v1607659016/inw-test-site/inw07.jpg
 ---
 Tracklist:
 

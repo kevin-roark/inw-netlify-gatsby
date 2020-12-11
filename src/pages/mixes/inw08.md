@@ -9,7 +9,7 @@ applemusicurl: https://music.apple.com/us/playlist/inw08-mix-by-alex-ho/pl.u-8Da
 spotifyurl: https://open.spotify.com/playlist/59moifAbQ1FUsEMGrphbjE?si=0aFky80qTUu4Jf-S4bm8IQ
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw08
 description: ""
-mainimage: https://res.cloudinary.com/inw-test/image/upload/v1595374391/inw-test-site/5f177b3707e0135224d84bb5.png
+mainimage: https://res.cloudinary.com/inw-test/image/upload/v1607659016/inw-test-site/inw08.jpg
 ---
 Tracklist:
 
