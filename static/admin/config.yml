@@ -37,7 +37,7 @@ collections:
     label: "Radio Archive"
     folder: "src/pages/radio-archives"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "radio-archive"}
       - {label: "Title", name: "title", widget: "string"}
@@ -50,7 +50,7 @@ collections:
       - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string", required: false}
       - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Main Image", name: "mainimage", widget: image, required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
       - {label: "Tags", name: "tags", widget: "list", required: false}
 
   - name: "mix"
