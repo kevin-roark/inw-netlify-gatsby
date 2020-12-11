@@ -88,13 +88,12 @@ collections:
               - {label: Label, name: label, widget: string}
               - {label: URL, name: url, widget: string}
           - {label: "Info", name: "body", widget: "markdown"}
-
-        - file: "src/configs/contact.md"
-          label: "Contact"
-          name: "contact"
-          fields:
-            - {label: Title, name: title, widget: string}
-            - {label: "Contact", name: "body", widget: "markdown"}
+      - file: "src/configs/contact.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: "Contact", name: "body", widget: "markdown"}
 
   - name: "pages"
     label: "Pages"
