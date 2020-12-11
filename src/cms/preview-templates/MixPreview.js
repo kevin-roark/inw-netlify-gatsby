@@ -15,7 +15,7 @@ const MixPreview = ({ entry, widgetFor }) => {
           mainimage: entry.getIn(['data', 'mainimage']),
           creator: entry.getIn(['data', 'creator']),
           creatorurl: entry.getIn(['data', 'creatorurl']),
-          date: entry.getIn(['data', 'date']),
+          date: String(entry.getIn(['data', 'date'])),
           tags: tags && tags.toJS(),
         },
       }}
