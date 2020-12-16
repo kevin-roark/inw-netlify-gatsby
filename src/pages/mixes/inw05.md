@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: Gideon Jacobs
 creatorurl: http://www.gideon.works/
+audiourl: https://media.infinitenew.world/mixes/INW05/INW05-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw05-selections-by-gideon-jacobs/pl.u-ovGltRZ6Y3m
 spotifyurl: https://open.spotify.com/playlist/2k10qrgnSGToPqNXk4LDd7?si=X2kWXQK8SfmkU840RcW66g
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw05

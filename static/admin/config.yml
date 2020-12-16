@@ -45,6 +45,7 @@ collections:
       - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Creator Name", name: "creator", widget: "string"}
       - {label: "Creator URL", name: "creatorurl", widget: "string", required: false}
+      - {label: "Audio File URL", name: "audiourl", widget: "string", required: false}
       - {label: "Apple Music URL", name: "applemusicurl", widget: "string", required: false}
       - {label: "Spotify URL", name: "spotifyurl", widget: "string", required: false}
       - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string", required: false}
@@ -65,6 +66,7 @@ collections:
       - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Creator Name", name: "creator", widget: "string"}
       - {label: "Creator URL", name: "creatorurl", widget: "string", required: false}
+      - {label: "Audio File URL", name: "audiourl", widget: "string", required: false}
       - {label: "Apple Music URL", name: "applemusicurl", widget: "string", required: false}
       - {label: "Spotify URL", name: "spotifyurl", widget: "string", required: false}
       - {label: "Soundcloud URL", name: "soundcloudurl", widget: "string", required: false}
@@ -81,6 +83,8 @@ collections:
         name: "mainconfig"
         fields:
           - {label: Title, name: title, widget: string}
+          - {label: Radio Home URL, name: radioHomeUrl, widget: string}
+          - {label: Radio Stream URL, name: radioStreamUrl, widget: string}
           - label: "URLS"
             name: "urls"
             widget: "list"

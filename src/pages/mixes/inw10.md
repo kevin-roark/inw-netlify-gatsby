@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: Jason Halal
 creatorurl: https://soundcloud.com/bluuurgh
+audiourl: https://media.infinitenew.world/mixes/INW10/INW10-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw10-mix-by-jason-halal/pl.u-8DdqtoP9xXE
 spotifyurl: https://open.spotify.com/playlist/34A7YUi0txQVHJDPl3W2Mk?si=s7HOAPpERr6Uo8rgVJP7UA
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw10

@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: Nikole Guzman
 creatorurl: ""
+audiourl: https://media.infinitenew.world/mixes/INW09/INW09-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw09-mix-by-nikole-guzman/pl.u-WBMaudrm6Ez
 spotifyurl: https://open.spotify.com/playlist/6jLQHQ1sayznKZKmr1YLsw?si=t07SSnB1QTSIO7E3MM1z7A
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw09

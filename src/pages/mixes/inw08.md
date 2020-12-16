@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: Alex Ho
 creatorurl: https://soundcloud.com/j0-j0armani
+audiourl: https://media.infinitenew.world/mixes/INW08/INW08-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw08-mix-by-alex-ho/pl.u-8Da6CoP9xXE
 spotifyurl: https://open.spotify.com/playlist/59moifAbQ1FUsEMGrphbjE?si=0aFky80qTUu4Jf-S4bm8IQ
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw08

@@ -1,64 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import { Link } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import { graphql } from 'gatsby'
+import SoundContentHeader from './SoundContentHeader'
+import ExternalSoundLinks from './ExternalSoundLinks'
+import ContentTags from './ContentTags'
 
 const MixContent = ({ data, className }) => {
-  const { title, description, mainimage, date, creator, creatorurl, tags } = data.frontmatter
+  const { description, tags } = data.frontmatter
   return (
     <article className={className}>
-      <header>
-        {mainimage ? (
-          <div className="featured-thumbnail">
-            <PreviewCompatibleImage
-              imageInfo={{
-                image: mainimage,
-                alt: `thumbnail for mix ${title}`,
-              }}
-            />
-          </div>
-        ) : null}
-
-        <p className="post-meta">
-          <Link
-            className="title has-text-primary is-size-4"
-            to={data.fields.slug}
-          >
-            {title}
-          </Link>
-          <span className="subtitle is-size-5 is-block">
-            <div>{date}</div>
-            <div>
-              {creatorurl ? (
-                <a href={creatorurl} target="_blank">
-                  {creator}
-                </a>
-              ) : creator}
-            </div>
-          </span>
-        </p>
-      </header>
+      <SoundContentHeader {...data} />
 
       {description && <p>{description}</p>}
 
-      <p dangerouslySetInnerHTML={{ __html: data.html }} />
+      <div dangerouslySetInnerHTML={{ __html: data.html }} />
 
-      {tags && tags.length ? (
-        <div style={{ marginTop: `4rem` }}>
-          <h4>Tags</h4>
-          <ul className="taglist">
-            {tags.map((tag) => (
-              <li key={tag + `tag`}>
-                <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+      <ExternalSoundLinks {...data.frontmatter} />
+
+      <ContentTags tags={tags} />
     </article>
   )
 }
+
+export const query = graphql`
+  fragment MixContentFrontmatterFragment on MarkdownRemark {
+    frontmatter {
+      title
+      templateKey
+      date(formatString: "MM/DD/YYYY")
+      mainimage
+      creator
+      creatorurl
+      tags
+      audiourl
+      soundcloudurl
+      spotifyurl
+      applemusicurl
+    }
+  }
+`
 
 export const MixContentDataShape = PropTypes.shape({
   html: PropTypes.string,

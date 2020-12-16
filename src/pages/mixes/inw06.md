@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: DOMINIKA MAZUROVÁ
 creatorurl: ""
+audiourl: https://media.infinitenew.world/mixes/INW06/INW06-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw06-mix-by-dominika-mazurov%C3%A1/pl.u-8d3jFoP9xXE
 spotifyurl: https://open.spotify.com/playlist/6D2UG4pEZQ6w4vAtZxNxsi?si=u8JAuTD4Rmq9_kMNuuxNcQ
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw06

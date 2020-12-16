@@ -5,6 +5,7 @@ date: 2020-05-07T20:30:50.752Z
 subtitle: ""
 creator: Dane Majors
 creatorurl: https://soundcloud.com/user-433273028
+audiourl: https://media.infinitenew.world/mixes/INW04/INW04-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw04-mix-by-dane-majors/pl.u-KRjGuZ2q5vp
 spotifyurl: https://open.spotify.com/playlist/5ySvwzIRjyNvZYYJ2AJe8O?si=OouTz__TTZW5-utFEXdorA
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw04

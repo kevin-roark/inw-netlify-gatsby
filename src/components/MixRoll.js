@@ -44,18 +44,8 @@ export default () => (
             node {
               id
               html
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                templateKey
-                date(formatString: "MM/DD/YYYY")
-                mainimage
-                creator
-                creatorurl
-                tags
-              }
+              fields { slug }
+              ...MixContentFrontmatterFragment
             }
           }
         }

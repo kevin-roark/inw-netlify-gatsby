@@ -5,6 +5,7 @@ date: 2020-05-07T20:30:50.752Z
 subtitle: ""
 creator: Luke Mele
 creatorurl: https://soundcloud.com/lukemele
+audiourl: https://media.infinitenew.world/mixes/INW03/INW03-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw03-mix-by-luke-mele/pl.u-xRakTk3mzAZ
 spotifyurl: https://open.spotify.com/playlist/3MyCzKIk5TtaDW2mg46B4l?si=gADlj7HuQkic1qi128MzsA
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw03

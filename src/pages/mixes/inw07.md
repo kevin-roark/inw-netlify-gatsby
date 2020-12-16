@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: Russell Alexander
 creatorurl: https://soundcloud.com/russalexander
+audiourl: https://media.infinitenew.world/mixes/INW07/INW07-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw07-russell-alexander/pl.u-o2Z9sRZ6Y3m
 spotifyurl: https://open.spotify.com/playlist/67OScb6pyaFj14XgNkZQcb?si=gL9uBP1VQdybpotLRGHb7Q
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw07

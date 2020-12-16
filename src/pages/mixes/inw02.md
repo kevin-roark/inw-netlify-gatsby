@@ -5,6 +5,7 @@ date: 2020-05-04T20:30:50.752Z
 subtitle: ""
 creator: Daniel T.
 creatorurl: https://soundcloud.com/danieltmusic
+audiourl: https://media.infinitenew.world/mixes/INW02/INW02-128k.mp3
 applemusicurl: https://music.apple.com/us/playlist/inw02-mix-by-dan-terndrup/pl.u-keNvH79GPvM
 spotifyurl: https://open.spotify.com/playlist/3mDnMqZbi8wtxmfe9h2QDK?si=XBqhWoNUSFi74oZvvwqSeQ
 soundcloudurl: https://soundcloud.com/infinitenewworld/inw02

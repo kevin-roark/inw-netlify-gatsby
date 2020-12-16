@@ -61,19 +61,8 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        description
-        date(formatString: "MM/DD/YYYY")
-        mainimage
-        creator
-        creatorurl
-        description
-        tags
-      }
+      fields { slug }
+      ...MixContentFrontmatterFragment
     }
   }
 `
