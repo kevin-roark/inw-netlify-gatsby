@@ -1,7 +1,7 @@
 ---
 title: Main Config
-radioHomeUrl: https://radio.infinitenew.world
-radioStreamUrl: https://radio.infinitenew.world/stream
+radioHomeUrl: http://radio.infinitenew.world
+radioStreamUrl: http://radio.infinitenew.world/stream
 urls:
   - label: Soundcloud
     url: https://soundcloud.com/infinitenewworld

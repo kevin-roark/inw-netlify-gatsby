@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import { getAudioTypeName } from '../util/format'
 
 // HpnNV7hjv2C95uvBE55HuKBUOQGzNDQM
 
@@ -14,9 +15,10 @@ export class AudioManagerModel {
   loading = false
   radioAvailable = false
   radioMetadata = null // null or { name, description }
+  hasSetup = false
 
   config = null
-  availableAudioItems = [] // graphql mix or radio-archive nodes
+  markdownAudioItems = [] // graphql mix or radio-archive nodes
 
   audioEl = null
   currentAudioItem = null // null or { type, title, src } data
@@ -31,10 +33,22 @@ export class AudioManagerModel {
 
   /// Actions
 
-  async setupFromMount({ config, audioItems, audioEl }) {
+  async setupFromMount({ config, markdownAudioItems, audioEl }) {
+    this.mounted = true
+
+    if (this.hasSetup) {
+      if (this.audioEl && this.wasPlayingBeforeUnmount) {
+        setTimeout(() => {
+          this.audioEl.play()
+        }, 0)
+      }
+      return
+    }
+
     this.config = config
     this.audioEl = audioEl
-    this.availableAudioItems = audioItems || []
+    this.markdownAudioItems = markdownAudioItems || []
+    this.hasSetup = true
 
     this.loading = true
     await Promise.all([
@@ -48,6 +62,11 @@ export class AudioManagerModel {
       setTimeout(this.updateRadioAvailableAndMetadataLoop, radioMetadataUpdateInterval)
       this.updateAudioLoop()
     })
+  }
+
+  handleUnmount() {
+    this.mounted = false
+    this.wasPlayingBeforeUnmount = this.playing
   }
 
   setCurrentAudioItem(item) {
@@ -64,13 +83,13 @@ export class AudioManagerModel {
     }
 
     // choose randomly from available media
-    const possibleItems = this.availableAudioItems
+    const possibleItems = this.markdownAudioItems
     if (possibleItems.length === 0) {
       return
     }
 
     const item = possibleItems[Math.floor(Math.random() * possibleItems.length)]
-    this.setCurrentAudioItem(this.getAudioItemAudioPlayerData(item))
+    this.setCurrentAudioItem(this.getMarkdownItemAudioPlayerData(item))
   }
 
   playCurrentAudioItem() {
@@ -78,22 +97,33 @@ export class AudioManagerModel {
       return
     }
 
-    // if (this.audioEl.src != this.currentAudioItem.src) {
-    //   this.audioEl.src = this.currentAudioItem.src
-    // }
+    if (this.audioEl.src !== this.currentAudioItem.src) {
+      this.audioEl.src = this.currentAudioItem.src
+      this.audioEl.currentTime = 0
+    }
 
-    this.audioEl.currentTime = 0
-    this.audioEl.play()
+    const prom = this.audioEl.play()
+    if (prom) {
+      prom.catch(err => {
+        console.log(err)
+      })
+    }
   }
 
-  setAndPlayAudioItem(item) {
-    this.setCurrentAudioItem(item)
-    this.playCurrentAudioItem(item)
+  setMarkdownAudioItem(node, autoplay) {
+    this.setCurrentAudioItem(this.getMarkdownItemAudioPlayerData(node))
+
+    if (autoplay) {
+      this.playCurrentAudioItem()
+    }
   }
 
   updateAudioElForNoAudio() {
     if (this.audioEl) {
-
+      if (!this.audioEl.paused) {
+        this.audioEl.pause()
+      }
+      this.audioEl.currentTime = 0
     }
   }
 
@@ -114,7 +144,7 @@ export class AudioManagerModel {
   /// Audio Player Data
 
   updateAudioDataFromAudioEl() {
-    if (!this.audioEl) {
+    if (!this.audioEl || !this.mounted) {
       return
     }
 
@@ -137,10 +167,11 @@ export class AudioManagerModel {
     }
   }
 
-  getAudioItemAudioPlayerData = (item) => ({
-    type: item.type,
-    title: item.name,
-    src: item.audiourl,
+  getMarkdownItemAudioPlayerData = (n) => ({
+    ...n.frontmatter,
+    type: getAudioTypeName(n.frontmatter.templateKey),
+    slug: n.fields.slug,
+    src: n.frontmatter.audiourl,
   })
 
   /// Loading Radio Data

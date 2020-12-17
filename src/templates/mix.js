@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
+import { setCurrentAudioItemEffect } from '../util/effects'
 import Layout from '../components/Layout'
 import MixContent, { MixContentDataShape } from '../components/MixContent'
 
@@ -29,6 +30,8 @@ MixTemplate.propTypes = {
 
 const Mix = ({ data }) => {
   const { markdownRemark: post } = data
+
+  useEffect(() => setCurrentAudioItemEffect(post))
 
   return (
     <Layout>

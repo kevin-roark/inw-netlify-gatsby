@@ -1,15 +1,12 @@
 
 .inw-player-container
   position: fixed
-  left: 0
-  bottom: 0
-  width: 100vw
-  height: 120px
+  left: 0; bottom: 0
+  width: 100vw; height: 120px
+  padding: 8px 20px
   z-index: 100
   background: #ccc
-  display: flex
-  align-items: flex-start
-  justify-content: center
+  display: flex; align-items: flex-start; justify-content: center
   font-family: Helvetica, sans-serif
   box-sizing: border-box
 
@@ -17,8 +14,7 @@
   box-sizing: border-box
 
 .inw-player-play-btn
-  width: 80px
-  height: 80px
+  width: 80px; height: 80px
   margin-top: 10px
   border-radius: 50%
   cursor: pointer
@@ -34,8 +30,7 @@
 
 .inw-loading
   position: absolute
-  top: 2px
-  left: 2px
+  top: 2px; left: 2px
   background: #ff0
   color: #000
   font-size: 18px
@@ -44,47 +39,45 @@
 .inw-player-current-item-container
 
 
-.inw-player-current-item-text
+.inw-player-current-item-meta
   position: absolute
-  left: 12px
-  top: 12px
+  left: 20px; top: 12px
+  display: flex; align-items: center
+
+  & *
+    margin-right: 4px
+
+.inw-player-current-item-text
   font-weight: bold
-  max-width: 200px
+  display: flex; align-items: center
 
 .inw-player-current-item-type
   color: #de7800
-  text-shadow: 0 1px rgba(0, 0, 0, 0.5)
 
 .inw-player-current-item-title
   color: #222
-  text-shadow: 0 1px rgba(0, 0, 0, 0.5)
 
 .inw-player-current-item-image
   width: 60px
   border-radius: 4px
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
 
-.inw-player-current-audio-ui
 
+.inw-player-current-audio-ui
 
 .inw-player-current-time
   position: absolute
-  bottom: 24px
-  left: 8px
-  font-size: 14px
-  font-weight: bold
+  bottom: 24px; left: 20px
+  font-size: 14px; font-weight: bold
 
 .inw-player-duration
   position: absolute
-  bottom: 24px
-  right: 8px
-  font-size: 14px
-  font-weight: bold
+  bottom: 24px; right: 20px
+  font-size: 14px; font-weight: bold
 
 .inw-player-progress-bar-base
   position: absolute
-  bottom: 1px
-  left: 1px
+  bottom: 1px; left: 1px
   width: calc(100% - 2px)
   height: 16px
   transform-origin: 0 50%
@@ -100,12 +93,10 @@
 
 .inw-player-radio-live-container
   position: absolute
-  top: 0
-  right: 0
+  top: 0; right: 20px
   background: #aaa
   padding: 2px 6px
-  display: flex
-  align-items: center
+  display: flex; align-items: center
 
 .inw-player-radio-live-title
   color: #444

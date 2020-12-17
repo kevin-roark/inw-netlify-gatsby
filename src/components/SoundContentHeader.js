@@ -4,8 +4,8 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 import AudioContentPlayButton from './AudioContentPlayButton'
 import CreatorLink from './CreatorLink'
 
-const SoundContentHeader = ({ frontmatter, fields }) => {
-  const { title, mainimage, date, creator, creatorurl } = frontmatter
+const SoundContentHeader = ({ data }) => {
+  const { title, mainimage, date, creator, creatorurl } = data.frontmatter
   return (
     <header>
       {mainimage ? (
@@ -22,7 +22,7 @@ const SoundContentHeader = ({ frontmatter, fields }) => {
       <div className="post-meta">
         <Link
           className="title has-text-primary is-size-4"
-          to={fields.slug}
+          to={data.fields.slug}
         >
           {title}
         </Link>
@@ -32,7 +32,7 @@ const SoundContentHeader = ({ frontmatter, fields }) => {
         </span>
       </div>
 
-      <AudioContentPlayButton data={frontmatter} />
+      <AudioContentPlayButton data={data} />
     </header>
   )
 }

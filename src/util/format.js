@@ -12,3 +12,14 @@ export const formatTime = (seconds) => {
   const s = Math.round(seconds - h * 3600 - m * 60)
   return `${h > 0 ? `${zpad(h)}:` : ''}${zpad(m)}:${zpad(s)}`
 }
+
+export const getAudioTypeName = (audioType) => {
+  switch (audioType) {
+    case 'mix':
+      return 'Mix'
+    case 'radio-archive':
+      return 'Radio Archive'
+    default:
+      return audioType
+  }
+}

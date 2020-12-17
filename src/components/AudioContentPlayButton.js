@@ -3,10 +3,10 @@ import { observer } from 'mobx-react'
 import { audioManagerModel } from '../models/audioManager'
 
 const AudioContentPlayButton = observer(({ model, data }) => {
-  return data.audiourl ? (
+  return data.frontmatter.audiourl ? (
     <div>
       <button
-        onClick={() => model.setAndPlayAudioItem(data)}
+        onClick={() => model.setMarkdownAudioItem(data, true)}
       >
         Play
       </button>

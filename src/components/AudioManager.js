@@ -8,8 +8,8 @@ import CreatorLink from './CreatorLink'
 import './audioManager.sass'
 
 const CurrentAudioTimeUI = observer(({ model }) => {
-  const { currentAudioItem, currentTime: time, isRadio: radio, duration } = model
-  if (!currentAudioItem) {
+  const { currentAudioItem, currentTime: time, isRadio: radio, duration, playing } = model
+  if (!currentAudioItem || !playing) {
     return null
   }
 
@@ -44,10 +44,13 @@ const CurrentAudioInfo = observer(({ model }) => {
 
   return (
     <div className="inw-player-current-item-container">
-      <div className="inw-player-current-item-text">
-        <div className="inw-player-current-item-type">{currentAudioItem.type}</div>
-        <div className="inw-player-current-item-title">
-          {wrapInLink(currentAudioItem.title)}
+      <div className="inw-player-current-item-meta">
+        <div className="inw-player-current-item-text">
+          <span className="inw-player-current-item-type">{currentAudioItem.type}</span>
+          {' — '}
+          <span className="inw-player-current-item-title">
+            {wrapInLink(currentAudioItem.title)}
+          </span>
         </div>
 
         {currentAudioItem.mainimage && wrapInLink(
@@ -83,18 +86,18 @@ class _AudioManager extends React.Component {
     const { model, data } = this.props
 
     if (model && data) {
-      const config = data.configs.edges[0].node
-
-      const audioItems = data.audioItems.edges.map(e => e.node)
-        .filter(n => !!n.frontmatter.audiourl)
-        .map(n => ({ ...n.frontmatter, type: n.frontmatter.templateKey, slug: n.fields.slug }))
-
+      const config = data.configs.edges[0].node.frontmatter
+      const audioItems = data.audioItems.edges.map(e => e.node).filter(n => !!n.frontmatter.audiourl)
       model.setupFromMount({
         config: config,
-        audioItems: audioItems,
+        markdownAudioItems: audioItems,
         audioEl: this.audioRef.current
       })
     }
+  }
+
+  componentWillUnmount() {
+    this.props.model.handleUnmount()
   }
 
   render() {
@@ -104,6 +107,8 @@ class _AudioManager extends React.Component {
       <div className="inw-player-container">
         {model.loading && <div className="inw-loading">Loading...</div>}
 
+        <CurrentAudioInfo model={model} />
+
         <button
           className="inw-player-play-btn"
           onClick={model.onPlayClick}
@@ -111,14 +116,11 @@ class _AudioManager extends React.Component {
           {model.playing ? 'Pause' : 'Play'}
         </button>
 
-        <CurrentAudioInfo model={model} />
-
         <RadioIndicator model={model} />
 
         <audio
           id="inw-player-audio"
           ref={this.audioRef}
-          src={model.currentAudioItem ? model.currentAudioItem.src : null}
         />
       </div>
     )

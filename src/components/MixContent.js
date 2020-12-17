@@ -9,7 +9,7 @@ const MixContent = ({ data, className }) => {
   const { description, tags } = data.frontmatter
   return (
     <article className={className}>
-      <SoundContentHeader {...data} />
+      <SoundContentHeader data={data} />
 
       {description && <p>{description}</p>}
 
