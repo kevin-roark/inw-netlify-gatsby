@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { observer } from 'mobx-react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import { audioManagerModel } from '../models/audioManager'
@@ -8,25 +8,38 @@ import CreatorLink from './CreatorLink'
 import './audioManager.sass'
 
 const CurrentAudioTimeUI = observer(({ model }) => {
+  const progressBarBgRef = useRef(null)
+
   const { currentAudioItem, currentTime: time, isRadio: radio, duration, playing } = model
-  if (!currentAudioItem || !playing) {
+  if (!currentAudioItem) {
     return null
   }
 
-  const progress = time / duration
+  const onProgressBarClick = (e) => {
+    const offsetWidth = progressBarBgRef.current.getBoundingClientRect().width
+    const newProgress = e.offsetX / offsetWidth
+    model.setAudioProgress(newProgress)
+  }
+
+  const curProgress = time / duration
 
   return (
     <div className="inw-player-current-audio-ui">
       <div className="inw-player-current-time">{formatTime(time)}</div>
       <div className="inw-player-duration">{radio ? '' : formatTime(duration)}</div>
-      <div className="inw-player-progress-bar-base inw-player-progress-bar-bg" />
+      <div
+        ref={progressBarBgRef}
+        className="inw-player-progress-bar-base inw-player-progress-bar-bg"
+        onClick={e => onProgressBarClick(e.nativeEvent)}
+      />
       {!radio && (
         <div
           className="inw-player-progress-bar-base inw-player-progress-bar"
           style={{
             // transform: `scaleX(${progress})`,
-            width: `${progress * 100}%`
+            width: `${curProgress * 100}%`
           }}
+          onClick={e => onProgressBarClick(e.nativeEvent)}
         />
       )}
     </div>

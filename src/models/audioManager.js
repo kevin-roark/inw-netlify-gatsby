@@ -127,6 +127,14 @@ export class AudioManagerModel {
     }
   }
 
+  setAudioProgress(progress) {
+    if (isNaN(progress) || !this.audioEl || this.isRadio || !this.currentAudioItem || !this.audioEl.duration) {
+      return
+    }
+
+    this.audioEl.currentTime = progress * this.audioEl.duration
+  }
+
   /// Event Handlers
 
   onPlayClick = () => {
