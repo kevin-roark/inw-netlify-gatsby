@@ -13,10 +13,7 @@ export const MixTemplate = ({ data, helmet }) => {
 
       <div className="container content">
         <div className="columns">
-          <MixContent
-            data={data}
-            className="column is-10 is-offset-1"
-          />
+          <MixContent data={data} className="column is-10 is-offset-1" />
         </div>
       </div>
     </section>
@@ -64,7 +61,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
-      fields { slug }
+      fields {
+        slug
+      }
       ...MixContentFrontmatterFragment
     }
   }

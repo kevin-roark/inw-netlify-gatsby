@@ -10,7 +10,13 @@ import './audioManager.sass'
 const CurrentAudioTimeUI = observer(({ model }) => {
   const progressBarBgRef = useRef(null)
 
-  const { currentAudioItem, currentTime: time, isRadio: radio, duration, playing } = model
+  const {
+    currentAudioItem,
+    currentTime: time,
+    isRadio: radio,
+    duration,
+    playing,
+  } = model
   if (!currentAudioItem) {
     return null
   }
@@ -26,20 +32,22 @@ const CurrentAudioTimeUI = observer(({ model }) => {
   return (
     <div className="inw-player-current-audio-ui">
       <div className="inw-player-current-time">{formatTime(time)}</div>
-      <div className="inw-player-duration">{radio ? '' : formatTime(duration)}</div>
+      <div className="inw-player-duration">
+        {radio ? '' : formatTime(duration)}
+      </div>
       <div
         ref={progressBarBgRef}
         className="inw-player-progress-bar-base inw-player-progress-bar-bg"
-        onClick={e => onProgressBarClick(e.nativeEvent)}
+        onClick={(e) => onProgressBarClick(e.nativeEvent)}
       />
       {!radio && (
         <div
           className="inw-player-progress-bar-base inw-player-progress-bar"
           style={{
             // transform: `scaleX(${progress})`,
-            width: `${curProgress * 100}%`
+            width: `${curProgress * 100}%`,
           }}
-          onClick={e => onProgressBarClick(e.nativeEvent)}
+          onClick={(e) => onProgressBarClick(e.nativeEvent)}
         />
       )}
     </div>
@@ -59,19 +67,29 @@ const CurrentAudioInfo = observer(({ model }) => {
     <div className="inw-player-current-item-container">
       <div className="inw-player-current-item-meta">
         <div className="inw-player-current-item-text">
-          <span className="inw-player-current-item-type">{currentAudioItem.type}</span>
+          <span className="inw-player-current-item-type">
+            {currentAudioItem.type}
+          </span>
           {' — '}
           <span className="inw-player-current-item-title">
             {wrapInLink(currentAudioItem.title)}
           </span>
         </div>
 
-        {currentAudioItem.mainimage && wrapInLink(
-          <img className="inw-player-current-item-image" src={currentAudioItem.mainimage} alt="" />
-        )}
+        {currentAudioItem.mainimage &&
+          wrapInLink(
+            <img
+              className="inw-player-current-item-image"
+              src={currentAudioItem.mainimage}
+              alt=""
+            />
+          )}
 
         {currentAudioItem.creator && (
-          <CreatorLink className="inw-player-current-item-creator" {...currentAudioItem} />
+          <CreatorLink
+            className="inw-player-current-item-creator"
+            {...currentAudioItem}
+          />
         )}
       </div>
 
@@ -83,9 +101,15 @@ const CurrentAudioInfo = observer(({ model }) => {
 const RadioIndicator = observer(({ model }) => {
   const { radioAvailable, radioMetadata: md } = model
   return (
-    <div className={`inw-player-radio-live-container ${radioAvailable ? 'online' : 'offline'}`}>
+    <div
+      className={`inw-player-radio-live-container ${
+        radioAvailable ? 'online' : 'offline'
+      }`}
+    >
       <div className="inw-player-radio-live-title">
-        {radioAvailable ? `Radio live${md && md.name ? ` — ${md.name}` : ''}` : 'No Radio'}
+        {radioAvailable
+          ? `Radio live${md && md.name ? ` — ${md.name}` : ''}`
+          : 'No Radio'}
       </div>
       <div className="inw-player-radio-live-dot"></div>
     </div>
@@ -100,11 +124,13 @@ class _AudioManager extends React.Component {
 
     if (model && data) {
       const config = data.configs.edges[0].node.frontmatter
-      const audioItems = data.audioItems.edges.map(e => e.node).filter(n => !!n.frontmatter.audiourl)
+      const audioItems = data.audioItems.edges
+        .map((e) => e.node)
+        .filter((n) => !!n.frontmatter.audiourl)
       model.setupFromMount({
         config: config,
         markdownAudioItems: audioItems,
-        audioEl: this.audioRef.current
+        audioEl: this.audioRef.current,
       })
     }
   }
@@ -122,19 +148,13 @@ class _AudioManager extends React.Component {
 
         <CurrentAudioInfo model={model} />
 
-        <button
-          className="inw-player-play-btn"
-          onClick={model.onPlayClick}
-        >
+        <button className="inw-player-play-btn" onClick={model.onPlayClick}>
           {model.playing ? 'Pause' : 'Play'}
         </button>
 
         <RadioIndicator model={model} />
 
-        <audio
-          id="inw-player-audio"
-          ref={this.audioRef}
-        />
+        <audio id="inw-player-audio" ref={this.audioRef} />
       </div>
     )
   }
@@ -148,11 +168,15 @@ export default () => (
       query AudioManagerQuery {
         audioItems: allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { in: ["mix", "radio-archive"] } } }
+          filter: {
+            frontmatter: { templateKey: { in: ["mix", "radio-archive"] } }
+          }
         ) {
           edges {
             node {
-              fields { slug }
+              fields {
+                slug
+              }
               frontmatter {
                 title
                 templateKey
@@ -166,8 +190,10 @@ export default () => (
           }
         }
 
-        configs: allMarkdownRemark(filter: { frontmatter: { title: { eq: "Main Config" } } }) {
-         	edges {
+        configs: allMarkdownRemark(
+          filter: { frontmatter: { title: { eq: "Main Config" } } }
+        ) {
+          edges {
             node {
               frontmatter {
                 radioHomeUrl

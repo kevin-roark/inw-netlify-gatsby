@@ -5,9 +5,7 @@ import { audioManagerModel } from '../models/audioManager'
 const AudioContentPlayButton = observer(({ model, data }) => {
   return data.frontmatter.audiourl ? (
     <div>
-      <button
-        onClick={() => model.setMarkdownAudioItem(data, true)}
-      >
+      <button onClick={() => model.setMarkdownAudioItem(data, true)}>
         Play
       </button>
     </div>
@@ -15,8 +13,5 @@ const AudioContentPlayButton = observer(({ model, data }) => {
 })
 
 export default ({ data }) => (
-  <AudioContentPlayButton
-    model={audioManagerModel}
-    data={data}
-  />
+  <AudioContentPlayButton model={audioManagerModel} data={data} />
 )

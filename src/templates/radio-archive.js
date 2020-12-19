@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import RadioArchiveContent, { RadioArchiveContentDataShape } from '../components/RadioArchiveContent'
+import RadioArchiveContent, {
+  RadioArchiveContentDataShape,
+} from '../components/RadioArchiveContent'
 
 export const RadioArchiveTemplate = ({ data, helmet }) => {
   return (
@@ -61,7 +63,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
-      fields { slug }
+      fields {
+        slug
+      }
       ...RadioArchiveContentFrontmatterFragment
     }
   }

@@ -1,5 +1,7 @@
 # Infinite New World Gatsby + Netlify Site
 
+https://app.netlify.com/sites/quirky-bassi-d3a924/overview
+
 ## Todo
 * real styling across site
 * about page

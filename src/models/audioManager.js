@@ -51,15 +51,15 @@ export class AudioManagerModel {
     this.hasSetup = true
 
     this.loading = true
-    await Promise.all([
-      this.updateRadioAvailable(),
-      this.updateRadioMetadata(),
-    ])
+    await Promise.all([this.updateRadioAvailable(), this.updateRadioMetadata()])
 
     runInAction(() => {
       this.loading = false
 
-      setTimeout(this.updateRadioAvailableAndMetadataLoop, radioMetadataUpdateInterval)
+      setTimeout(
+        this.updateRadioAvailableAndMetadataLoop,
+        radioMetadataUpdateInterval
+      )
       this.updateAudioLoop()
     })
   }
@@ -104,7 +104,7 @@ export class AudioManagerModel {
 
     const prom = this.audioEl.play()
     if (prom) {
-      prom.catch(err => {
+      prom.catch((err) => {
         console.log(err)
       })
     }
@@ -128,7 +128,13 @@ export class AudioManagerModel {
   }
 
   setAudioProgress(progress) {
-    if (isNaN(progress) || !this.audioEl || this.isRadio || !this.currentAudioItem || !this.audioEl.duration) {
+    if (
+      isNaN(progress) ||
+      !this.audioEl ||
+      this.isRadio ||
+      !this.currentAudioItem ||
+      !this.audioEl.duration
+    ) {
       return
     }
 
@@ -170,7 +176,9 @@ export class AudioManagerModel {
     const md = this.radioMetadata
     return {
       type: 'Radio',
-      title: md ? `${md.name}${md.description ? ` - ${md.description}` : ''}` : '',
+      title: md
+        ? `${md.name}${md.description ? ` - ${md.description}` : ''}`
+        : '',
       src: this.config.radioStreamUrl,
     }
   }
@@ -184,32 +192,35 @@ export class AudioManagerModel {
 
   /// Loading Radio Data
 
-  getRadioAvailable = () => fetch(this.config.radioStreamUrl)
-    .then(res => res.status === 200)
-    .catch(err => {
-      console.log(err)
-      return false
+  getRadioAvailable = () =>
+    fetch(this.config.radioStreamUrl)
+      .then((res) => res.status === 200)
+      .catch((err) => {
+        console.log(err)
+        return false
+      })
+
+  updateRadioAvailable = () =>
+    this.getRadioAvailable().then((avail) => {
+      runInAction(() => {
+        this.radioAvailable = !!avail
+      })
     })
 
-  updateRadioAvailable = () => this.getRadioAvailable().then(avail => {
-    runInAction(() => {
-      this.radioAvailable = !!avail
-    })
-  })
+  updateRadioMetadata = () =>
+    this.scrapeIcecastHomepageForRadioMetadata(this.config).then((metadata) => {
+      runInAction(() => {
+        this.radioMetadata = metadata
 
-  updateRadioMetadata = () => this.scrapeIcecastHomepageForRadioMetadata(this.config).then(metadata => {
-    runInAction(() => {
-      this.radioMetadata = metadata
-
-      if (this.isRadio) {
-        if (metadata) {
-          this.currentAudioItem.title = this.getRadioAudioPlayerData().tiltle
-        } else {
-          this.setCurrentAudioItem(null)
+        if (this.isRadio) {
+          if (metadata) {
+            this.currentAudioItem.title = this.getRadioAudioPlayerData().tiltle
+          } else {
+            this.setCurrentAudioItem(null)
+          }
         }
-      }
+      })
     })
-  })
 
   updateRadioAvailableAndMetadataLoop = () => {
     try {
@@ -219,19 +230,23 @@ export class AudioManagerModel {
       console.log(err)
     }
 
-    setTimeout(this.updateRadioAvailableAndMetadataLoop, radioMetadataUpdateInterval)
+    setTimeout(
+      this.updateRadioAvailableAndMetadataLoop,
+      radioMetadataUpdateInterval
+    )
   }
 
   scrapeIcecastHomepageForRadioMetadata(config) {
     return fetch(config.radioHomeUrl)
-      .then(response => response.text())
-      .then(text => {
+      .then((response) => response.text())
+      .then((text) => {
         const parser = new DOMParser()
         const doc = parser.parseFromString(text, 'text/html')
         const tableRows = doc.querySelectorAll('.mountcont tbody tr')
 
-        let streamName = null, streamDescription = null
-        tableRows.forEach(r => {
+        let streamName = null,
+          streamDescription = null
+        tableRows.forEach((r) => {
           const tds = r.querySelectorAll('td')
           const title = tds[0].innerText
           const data = tds[1].innerText
@@ -244,7 +259,7 @@ export class AudioManagerModel {
 
         return { name: streamName, description: streamDescription }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('err scraping icecast homepage', err)
         return null
       })

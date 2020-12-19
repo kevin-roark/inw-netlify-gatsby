@@ -39,7 +39,10 @@ const Navbar = class extends React.Component {
   }
 
   render() {
-    const pathname = typeof window !== 'undefined' && window.location && window.location.pathname
+    const pathname =
+      typeof window !== 'undefined' &&
+      window.location &&
+      window.location.pathname
     return (
       <nav
         className="navbar is-transparent"
@@ -49,7 +52,11 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Infinite New World" style={{ width: '280px', maxHeight: 'none' }} />
+              <img
+                src={logo}
+                alt="Infinite New World"
+                style={{ width: '280px', maxHeight: 'none' }}
+              />
             </Link>
             {/* Hamburger menu */}
             <div
@@ -67,10 +74,12 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start has-text-centered">
-              {navBarLinks.map(item => (
+              {navBarLinks.map((item) => (
                 <Link
                   key={item.url}
-                  className={`navbar-item ${item.url === pathname ? 'current' : ''}`}
+                  className={`navbar-item ${
+                    item.url === pathname ? 'current' : ''
+                  }`}
                   to={item.url}
                 >
                   {item.label}

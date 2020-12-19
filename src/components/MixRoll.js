@@ -44,7 +44,9 @@ export default () => (
             node {
               id
               html
-              fields { slug }
+              fields {
+                slug
+              }
               ...MixContentFrontmatterFragment
             }
           }

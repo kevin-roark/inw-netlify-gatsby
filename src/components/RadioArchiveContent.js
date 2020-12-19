@@ -51,11 +51,11 @@ export const RadioArchiveContentDataShape = PropTypes.shape({
     creator: PropTypes.string,
     creatorurl: PropTypes.string,
     tags: PropTypes.array,
-  })
+  }),
 })
 
 RadioArchiveContent.propTypes = {
-  data: RadioArchiveContentDataShape
+  data: RadioArchiveContentDataShape,
 }
 
 export default RadioArchiveContent

@@ -52,11 +52,11 @@ export const MixContentDataShape = PropTypes.shape({
     creator: PropTypes.string,
     creatorurl: PropTypes.string,
     tags: PropTypes.array,
-  })
+  }),
 })
 
 MixContent.propTypes = {
-  data: MixContentDataShape
+  data: MixContentDataShape,
 }
 
 export default MixContent
